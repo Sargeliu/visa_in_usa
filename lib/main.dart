@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:visa_in_usa/views/home/home_view.dart';
-import 'package:visa_in_usa/widgets/doc_list/doc_list.dart';
 import 'package:visa_in_usa/widgets/visa_scheme/visa_scheme.dart';
+
 
 void main() {
   runApp(const MyApp());

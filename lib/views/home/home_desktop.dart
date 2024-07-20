@@ -13,8 +13,7 @@ class HomeDesktop extends StatelessWidget {
       body: ListView(
         children: const [
           DocList(),
-          VisaScheme()
-,        ],
+        ],
       ),
     );
   }
