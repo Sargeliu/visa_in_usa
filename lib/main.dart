@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:visa_in_usa/widgets/reviews/reviews.dart';
-import 'package:visa_in_usa/widgets/visa_scheme/visa_scheme.dart';
+import 'package:visa_in_usa/widgets/footer/footer.dart';
+import 'package:visa_in_usa/widgets/footer/mobile_footer.dart';
 
 
 void main() {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.white,
         body: ListView(
           children: const [
-            Reviews(),
+            Footer(),
           ],
         ),
       ),
