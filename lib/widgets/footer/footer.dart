@@ -19,10 +19,10 @@ class Footer extends StatelessWidget {
 
   Widget _buildFooterContent(BuildContext context, {required bool isMobile}) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 40),
+      //padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 40),
       color: primaryFirstColor,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (isMobile) ...[
             const Text.rich(
@@ -94,6 +94,7 @@ class Footer extends StatelessWidget {
 
   Widget _buildSocialMediaIcons() {
     return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _HoverIconButton('assets/telegram.svg', 'https://t.me/username'),
         _HoverIconButton('assets/whatsapp.svg', 'https://wa.me/username'),
@@ -118,24 +119,26 @@ class _HoverIconButtonState extends State<_HoverIconButton> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => _onHover(true),
-      onExit: (_) => _onHover(false),
-      child: GestureDetector(
-        onTap: () {
-          // Откройте URL в браузере или в соответствующем приложении
-          // launchUrl(Uri.parse(widget.url)); // Пример использования url_launcher пакета
-        },
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          transform: Matrix4.identity()..scale(_isHovered ? 1.2 : 1.0),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SvgPicture.asset(
-              widget.assetPath,
-              width: 30,
-              height: 30,
-              color: _isHovered ? primarySecondColor : Colors.white,
+    return CenteredViewMobile(
+      child: MouseRegion(
+        onEnter: (_) => _onHover(true),
+        onExit: (_) => _onHover(false),
+        child: GestureDetector(
+          onTap: () {
+            // Откройте URL в браузере или в соответствующем приложении
+            // launchUrl(Uri.parse(widget.url)); // Пример использования url_launcher пакета
+          },
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            transform: Matrix4.identity()..scale(_isHovered ? 1.2 : 1.0),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(
+                widget.assetPath,
+                width: 30,
+                height: 30,
+                color: _isHovered ? primarySecondColor : Colors.white,
+              ),
             ),
           ),
         ),
@@ -164,24 +167,27 @@ class _HoverTextButtonState extends State<_HoverTextButton> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => _onHover(true),
-      onExit: (_) => _onHover(false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        transform: Matrix4.identity()..scale(_isHovered ? 1.1 : 1.0),
-        child: Row(
-          children: [
-            Icon(widget.icon, color: _isHovered ? primarySecondColor : Colors.white),
-            const SizedBox(width: 10),
-            Text(
-              widget.text,
-              style: GoogleFonts.montserrat(
-                color: _isHovered ? primarySecondColor : Colors.white,
-                fontSize: 16,
+    return CenteredViewMobile(
+      child: MouseRegion(
+        onEnter: (_) => _onHover(true),
+        onExit: (_) => _onHover(false),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          transform: Matrix4.identity()..scale(_isHovered ? 1.1 : 1.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(widget.icon, color: _isHovered ? primarySecondColor : Colors.white),
+              const SizedBox(width: 10),
+              Text(
+                widget.text,
+                style: GoogleFonts.montserrat(
+                  color: _isHovered ? primarySecondColor : Colors.white,
+                  fontSize: 16,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
