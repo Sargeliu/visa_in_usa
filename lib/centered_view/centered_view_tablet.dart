@@ -7,10 +7,10 @@ class CenteredViewTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       alignment: Alignment.topCenter,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 768),
+        constraints: const BoxConstraints(maxWidth: 800),
         child: child,
       ),
     );
