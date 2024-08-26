@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:visa_in_usa/widgets/footer/footer.dart';
-import 'package:visa_in_usa/widgets/footer/mobile_footer.dart';
 
 
 void main() {
