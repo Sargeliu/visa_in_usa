@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:visa_in_usa/centered_view/centered_view_mobile.dart';
 import 'package:visa_in_usa/constants/app_colors.dart';
 
-class MobileFooter extends StatelessWidget {
-  const MobileFooter({super.key});
+class DesktopFooter extends StatelessWidget {
+  const DesktopFooter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: primaryFirstColor,
-      child: CenteredViewMobile(
-        child: _buildFooterContent(context),
-      ),
-    );
+    return _buildFooterContent(context);
   }
 
   Widget _buildFooterContent(BuildContext context) {
     return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 40),
+      color: primaryFirstColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Text.rich(
             TextSpan(
-              text: 'ВИЗА ',
+              text: 'ВИЗА\n',
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 36,
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
               ),
@@ -34,7 +30,7 @@ class MobileFooter extends StatelessWidget {
                 TextSpan(
                   text: 'В США',
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 36,
                     color: primarySecondColor,
                     fontWeight: FontWeight.w700,
                   ),
@@ -42,13 +38,7 @@ class MobileFooter extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 16,
-          ),
           _buildHoverFooterItem("info@visausa.com", Icons.email),
-          const SizedBox(
-            height: 16,
-          ),
           _buildHoverFooterItem("+1 (234) 567-890", Icons.phone),
           _buildSocialMediaIcons(),
         ],
@@ -65,7 +55,6 @@ class MobileFooter extends StatelessWidget {
 
   Widget _buildSocialMediaIcons() {
     return const Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _HoverIconButton('assets/telegram.svg', 'https://t.me/username'),
         _HoverIconButton('assets/whatsapp.svg', 'https://wa.me/username'),
@@ -105,8 +94,8 @@ class _HoverIconButtonState extends State<_HoverIconButton> {
             padding: const EdgeInsets.all(16.0),
             child: SvgPicture.asset(
               widget.assetPath,
-              width: 25,
-              height: 25,
+              width: 30,
+              height: 30,
               color: _isHovered ? primarySecondColor : Colors.white,
             ),
           ),
@@ -125,7 +114,6 @@ class _HoverIconButtonState extends State<_HoverIconButton> {
 class _HoverTextButton extends StatefulWidget {
   final String text;
   final IconData icon;
-
   const _HoverTextButton({required this.text, required this.icon});
 
   @override
@@ -144,17 +132,15 @@ class _HoverTextButtonState extends State<_HoverTextButton> {
         duration: const Duration(milliseconds: 200),
         transform: Matrix4.identity()..scale(_isHovered ? 1.1 : 1.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(widget.icon,
-                color: _isHovered ? primarySecondColor : Colors.white),
+            Icon(widget.icon, color: _isHovered ? primarySecondColor : Colors.white),
             const SizedBox(width: 10),
             Text(
               widget.text,
               style: GoogleFonts.montserrat(
                 color: _isHovered ? primarySecondColor : Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w600
+                fontSize: 20,
+                fontWeight: FontWeight.w400
               ),
             ),
           ],

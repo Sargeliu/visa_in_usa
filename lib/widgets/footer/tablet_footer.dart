@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:visa_in_usa/centered_view/centered_view_mobile.dart';
+import 'package:visa_in_usa/centered_view/centered_view_tablet.dart';
 import 'package:visa_in_usa/constants/app_colors.dart';
 
-class MobileFooter extends StatelessWidget {
-  const MobileFooter({super.key});
+class TabletFooter extends StatelessWidget {
+  const TabletFooter({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: primaryFirstColor,
-      child: CenteredViewMobile(
-        child: _buildFooterContent(context),
+      child: CenteredViewTablet(
+        child: _buildTabletFooterContent(context),
       ),
     );
   }
 
-  Widget _buildFooterContent(BuildContext context) {
+  Widget _buildTabletFooterContent(BuildContext context) {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,14 +42,16 @@ class MobileFooter extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 16,
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildHoverFooterItem("info@visausa.com", Icons.email),
+              const SizedBox(width: 30,),
+              _buildHoverFooterItem("+1 (234) 567-890", Icons.phone),
+            ],
           ),
-          _buildHoverFooterItem("info@visausa.com", Icons.email),
-          const SizedBox(
-            height: 16,
-          ),
-          _buildHoverFooterItem("+1 (234) 567-890", Icons.phone),
+          const SizedBox(height: 16),
           _buildSocialMediaIcons(),
         ],
       ),
@@ -69,7 +71,8 @@ class MobileFooter extends StatelessWidget {
       children: [
         _HoverIconButton('assets/telegram.svg', 'https://t.me/username'),
         _HoverIconButton('assets/whatsapp.svg', 'https://wa.me/username'),
-        _HoverIconButton('assets/viber.svg', 'viber://chat?number=%2B1234567890'),
+        _HoverIconButton(
+            'assets/viber.svg', 'viber://chat?number=%2B1234567890'),
       ],
     );
   }
@@ -105,8 +108,8 @@ class _HoverIconButtonState extends State<_HoverIconButton> {
             padding: const EdgeInsets.all(16.0),
             child: SvgPicture.asset(
               widget.assetPath,
-              width: 25,
-              height: 25,
+              width: 30,
+              height: 30,
               color: _isHovered ? primarySecondColor : Colors.white,
             ),
           ),
@@ -144,7 +147,6 @@ class _HoverTextButtonState extends State<_HoverTextButton> {
         duration: const Duration(milliseconds: 200),
         transform: Matrix4.identity()..scale(_isHovered ? 1.1 : 1.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(widget.icon,
                 color: _isHovered ? primarySecondColor : Colors.white),
@@ -153,8 +155,8 @@ class _HoverTextButtonState extends State<_HoverTextButton> {
               widget.text,
               style: GoogleFonts.montserrat(
                 color: _isHovered ? primarySecondColor : Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w600
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ],
