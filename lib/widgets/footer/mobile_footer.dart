@@ -69,9 +69,24 @@ class MobileFooter extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        HoverIconButton('assets/telegram.svg', 'https://t.me/username'),
-        HoverIconButton('assets/whatsapp.svg', 'https://wa.me/username'),
-        HoverIconButton('assets/viber.svg', 'viber://chat?number=%2B1234567890'),
+        HoverIconButton(
+          assetPath: 'assets/telegram.svg',
+          url: 'https://t.me/username',
+          primaryColor: Colors.white,     // Основной цвет - белый
+          hoverColor: primarySecondColor, // Цвет при наведении
+        ),
+        HoverIconButton(
+          assetPath: 'assets/whatsapp.svg',
+          url: 'https://wa.me/username',
+          primaryColor: Colors.white,     // Основной цвет - белый
+          hoverColor: primarySecondColor, // Цвет при наведении
+        ),
+        HoverIconButton(
+          assetPath: 'assets/viber.svg',
+          url: 'viber://chat?number=%2B1234567890',
+          primaryColor: Colors.white,     // Основной цвет - белый
+          hoverColor: primarySecondColor, // Цвет при наведении
+        ),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visa_in_usa/centered_view/centered_view.dart';
 import 'package:visa_in_usa/constants/app_colors.dart';
 
 import '../hover_icon_button.dart';
@@ -11,7 +12,11 @@ class DesktopFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildFooterContent(context);
+    return Container(
+      child: CenteredView(
+        child: _buildFooterContent(context),
+      ),
+    );
   }
 
   Widget _buildFooterContent(BuildContext context) {
@@ -41,27 +46,54 @@ class DesktopFooter extends StatelessWidget {
               ],
             ),
           ),
-          _buildHoverFooterItem("info@visausa.com", Icons.email),
-          _buildHoverFooterItem("+1 (234) 567-890", Icons.phone),
+          const HoverTextButton(
+            text: "info@visausa.com",
+            icon: Icons.email,
+            primaryColor: Colors.white,    // Основной цвет - белый
+            hoverColor: primarySecondColor, // Цвет при наведении
+          ),
+          const HoverTextButton(
+            text: "+7 912 791 85 52",
+            icon: Icons.phone,
+            primaryColor: Colors.white,    // Основной цвет - белый
+            hoverColor: primarySecondColor, // Цвет при наведении
+          ),
           _buildSocialMediaIcons(),
         ],
       ),
     );
   }
 
-  Widget _buildHoverFooterItem(String text, IconData icon) {
+  /*Widget _buildHoverFooterItem(String text, IconData icon) {
     return HoverTextButton(
       text: text,
       icon: icon,
+      primaryColor: null,
+      hoverColor: null,
     );
-  }
+  }*/
 
   Widget _buildSocialMediaIcons() {
     return const Row(
       children: [
-        HoverIconButton('assets/telegram.svg', 'https://t.me/username'),
-        HoverIconButton('assets/whatsapp.svg', 'https://wa.me/username'),
-        HoverIconButton('assets/viber.svg', 'viber://chat?number=%2B1234567890'),
+        HoverIconButton(
+          assetPath: 'assets/telegram.svg',
+          url: 'https://t.me/username',
+          primaryColor: Colors.white,     // Основной цвет - белый
+          hoverColor: primarySecondColor, // Цвет при наведении
+        ),
+        HoverIconButton(
+          assetPath: 'assets/whatsapp.svg',
+          url: 'https://wa.me/username',
+          primaryColor: Colors.white,     // Основной цвет - белый
+          hoverColor: primarySecondColor, // Цвет при наведении
+        ),
+        HoverIconButton(
+          assetPath: 'assets/viber.svg',
+          url: 'viber://chat?number=%2B1234567890',
+          primaryColor: Colors.white,     // Основной цвет - белый
+          hoverColor: primarySecondColor, // Цвет при наведении
+        ),
       ],
     );
   }

@@ -5,8 +5,16 @@ import 'package:visa_in_usa/constants/app_colors.dart';
 class HoverIconButton extends StatefulWidget {
   final String assetPath;
   final String url;
+  final Color primaryColor; // Основной цвет
+  final Color hoverColor;   // Цвет при наведении
 
-  const HoverIconButton(this.assetPath, this.url, {super.key});
+  const HoverIconButton({
+    required this.assetPath,
+    required this.url,
+    required this.primaryColor,  // Обязательный параметр
+    required this.hoverColor,    // Обязательный параметр
+    super.key,
+  });
 
   @override
   _HoverIconButtonState createState() => _HoverIconButtonState();
@@ -22,7 +30,7 @@ class _HoverIconButtonState extends State<HoverIconButton> {
       onExit: (_) => _onHover(false),
       child: GestureDetector(
         onTap: () {
-          // Откройте URL в браузере или в соответствующем приложении
+          // Открывает URL в браузере или соответствующем приложении
           // launchUrl(Uri.parse(widget.url)); // Пример использования url_launcher пакета
         },
         child: AnimatedContainer(
@@ -34,7 +42,7 @@ class _HoverIconButtonState extends State<HoverIconButton> {
               widget.assetPath,
               width: 30,
               height: 30,
-              color: _isHovered ? primarySecondColor : Colors.white,
+              color: _isHovered ? widget.hoverColor : widget.primaryColor,
             ),
           ),
         ),
