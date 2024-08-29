@@ -4,13 +4,13 @@ import 'package:visa_in_usa/constants/app_colors.dart';
 
 class HoverTextButton extends StatefulWidget {
   final String text;
-  final IconData icon;
+  final IconData? icon; // Изменено на опциональный тип
   final Color primaryColor; // Добавляем параметр для основного цвета
   final Color hoverColor;   // Добавляем параметр для цвета при наведении
 
   const HoverTextButton({
     required this.text,
-    required this.icon,
+    this.icon, // Теперь этот параметр может быть null
     required this.primaryColor, // Обязательный параметр
     required this.hoverColor,   // Обязательный параметр
   });
@@ -32,11 +32,12 @@ class HoverTextButtonState extends State<HoverTextButton> {
         transform: Matrix4.identity()..scale(_isHovered ? 1.1 : 1.0),
         child: Row(
           children: [
+            if(widget.icon != null) // Проверка на null
             Icon(
               widget.icon,
               color: _isHovered ? widget.hoverColor : widget.primaryColor,
             ),
-            const SizedBox(width: 10),
+            if (widget.icon != null) const SizedBox(width: 10), // Отступ только если есть иконка
             Text(
               widget.text,
               style: GoogleFonts.montserrat(
