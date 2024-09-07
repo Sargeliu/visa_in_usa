@@ -17,9 +17,14 @@ class CountriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double screenWidth = MediaQuery.of(context).size.width;
+    double headerFontSize = screenWidth > 800 ? 24 : 20;
+    double textFontSize = screenWidth > 800 ? 20 : 16;
+
     return Container(
-      margin: EdgeInsets.all(16.0),
-      padding: EdgeInsets.all(16.0),
+      margin: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.0),
@@ -36,11 +41,11 @@ class CountriesList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             'Страны где можно оформить',
             style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+              fontSize: headerFontSize,
+              fontWeight: FontWeight.w600,
             ),
           ),
           const SizedBox(height: 16),
@@ -61,8 +66,9 @@ class CountriesList extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
                       countries[index],
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: textFontSize,
+                        fontWeight: FontWeight.w400
                       ),
                     ),
                   );

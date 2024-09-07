@@ -4,25 +4,34 @@ import 'package:visa_in_usa/constants/app_colors.dart';
 class ServiceCost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Определяем ширину экрана
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    // Определяем размер шрифта в зависимости от ширины экрана
+    double headerFontSize = screenWidth > 800 ? 40 : 24; // Для компьютера
+    // 40, для телефона 30
+    double textFontSize = screenWidth > 800 ? 24 : 14; //Для компьютера 18,
+    // для телефона 16
+
     return Container(
       margin: const EdgeInsets.all(16.0),
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'Стоимость услуги:',
             style: TextStyle(
-              fontSize: 40,
+              fontSize: headerFontSize,
               fontWeight: FontWeight.w600,
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
-          const Text(
+           Text(
             '6 000 Р + консульский сбор',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: textFontSize,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
