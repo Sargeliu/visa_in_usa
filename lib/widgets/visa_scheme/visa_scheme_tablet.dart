@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visa_in_usa/centered_view/centered_view_tablet.dart';
 
 import '../../centered_view/centered_view_mobile.dart';
 import '../../constants/app_colors.dart';
 
-class VisaSchemeMobile extends StatelessWidget {
-  const VisaSchemeMobile({super.key});
+class VisaSchemeTablet extends StatelessWidget {
+  const VisaSchemeTablet({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: CenteredViewMobile(
-        child: _buildVisaSchemeMobile(context),
+      child: CenteredViewTablet(
+        child: _buildVisaSchemeTablet(context),
       ),
     );
   }
 
-  Widget _buildVisaSchemeMobile(BuildContext context) {
-
+  Widget _buildVisaSchemeTablet(BuildContext context) {
     return Container(
       // padding: const EdgeInsets.all(20),
-      child: Center(
+      child: const Center(
         child: Column(
           children: [
             Text(
@@ -34,8 +34,8 @@ class VisaSchemeMobile extends StatelessWidget {
               height: 34,
             ),
             Wrap(
-              spacing: 20, // Отступ между контейнерами
-              runSpacing: 20, // Отступ между строками контейнеров
+              spacing: 14, // Отступ между контейнерами
+              runSpacing: 14, // Отступ между строками контейнеров
               children: [
                 _DocumentContainer(
                   title: 'Шаг 1. \nПодготовка \nдокументов',
@@ -103,7 +103,7 @@ class _DocumentContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 290,
-      height: 350,
+      height: 340,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

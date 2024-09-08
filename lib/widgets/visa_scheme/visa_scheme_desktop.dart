@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../centered_view/centered_view.dart';
 import '../../constants/app_colors.dart';
 
 class VisaSchemeDesktop extends StatelessWidget {
@@ -9,59 +10,78 @@ class VisaSchemeDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white, // Установка белого фона
+      child: CenteredView(
+        child: _buildVisaSchemeDesktop(context),
+      ),
+    );
+  }
+
+  @override
+  Widget _buildVisaSchemeDesktop(BuildContext context) {
+    return Container(
       padding: const EdgeInsets.all(20),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: const Wrap(
-            spacing: 20, // Отступ между контейнерами
-            runSpacing: 20, // Отступ между строками контейнеров
-            children: [
-              _DocumentContainer(
-                title: 'Шаг 1. Подготовка документов',
-                steps: [
-                  'Ксерокопия/скан первой страницы паспорта РФ;',
-                  'Ксерокопия/скан первой страницы загранпаспорта;',
-                  'Заполненный опросный лист;',
-                  'Одна цветная фотография 5х5см. на белом фоне в электронном виде;',
-                  'Приглашение от родственников или друзей. (Если Вас приглашают).',
-                ],
-                imagePath: 'assets/first_step.png',
-              ),
-              _DocumentContainer(
-                title: 'Шаг 2. Оплата консульского сбора и услуг \nпо оформлению'
-                    ' визы',
-                steps: [
-                  'В данный момент консульский сбор составляет \n185 долларов с '
-                      'одного '
-                      'заявителя. Оплата возможна \nтолько с карт иностранных '
-                      'банков. Если у Вас нет возможности оплатить сбор нажмите'
-                      ' - запросить условия оплаты.',
-                ],
-                imagePath: 'assets/second_step.png',
-              ),
-              _DocumentContainer(
-                title: 'Шаг 3. Запись на собеседование',
-                steps: [
-                  'Запишем Вас на ближайшую доступную \nдату собеседования.',
-                  'Или запишем на выбранный вами диапазон дат \nс помощью бота.',
-                ],
-                imagePath: 'assets/third_ step.png',
-              ),
-              _DocumentContainer(
-                title: 'Шаг 4. Документы для собеседования',
-                steps: [
-                  'Ксерокопия/скан первой страницы паспорта РФ;',
-                  'Ксерокопия/скан первой страницы загранпаспорта;',
-                  'Заполненный опросный лист;',
-                  'Одна цветная фотография 5х5см. на белом фоне в электронном виде;',
-                  'Приглашение от родственников или друзей. (Если Вас приглашают).',
-                ],
-                imagePath: 'assets/fourth_ step.png',
-              ),
-            ],
-          ),
+      child: const Center(
+        child: Column(
+          children: [
+            Text(
+              "Схема получения визы:",
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 40,
+                  color: Colors.black),
+            ),
+            SizedBox(
+              height: 81,
+            ),
+            Wrap(
+              spacing: 20, // Отступ между контейнерами
+              runSpacing: 20, // Отступ между строками контейнеров
+              children: [
+                _DocumentContainer(
+                  title: 'Шаг 1. Подготовка документов',
+                  steps: [
+                    'Ксерокопия/скан первой страницы паспорта РФ;',
+                    'Ксерокопия/скан первой страницы загранпаспорта;',
+                    'Заполненный опросный лист;',
+                    'Одна цветная фотография 5х5см. на белом фоне в электронном виде;',
+                    'Приглашение от родственников или друзей. (Если Вас приглашают).',
+                  ],
+                  imagePath: 'assets/first_step.png',
+                ),
+                _DocumentContainer(
+                  title: 'Шаг 2. Оплата консульского сбора и услуг \nпо оформлению'
+                      ' визы',
+                  steps: [
+                    'В данный момент консульский сбор составляет \n185 долларов с '
+                        'одного '
+                        'заявителя. Оплата возможна \nтолько с карт иностранных '
+                        'банков. Если у Вас нет возможности оплатить сбор нажмите'
+                        ' - запросить условия оплаты.',
+                  ],
+                  imagePath: 'assets/second_step.png',
+                ),
+                _DocumentContainer(
+                  title: 'Шаг 3. Запись на собеседование',
+                  steps: [
+                    'Запишем Вас на ближайшую доступную \nдату собеседования.',
+                    'Или запишем на выбранный вами диапазон дат \nс помощью бота.',
+                  ],
+                  imagePath: 'assets/third_ step.png',
+                ),
+                _DocumentContainer(
+                  title: 'Шаг 4. Документы для собеседования',
+                  steps: [
+                    'Ксерокопия/скан первой страницы паспорта РФ;',
+                    'Ксерокопия/скан первой страницы загранпаспорта;',
+                    'Заполненный опросный лист;',
+                    'Одна цветная фотография 5х5см. на белом фоне в электронном виде;',
+                    'Приглашение от родственников или друзей. (Если Вас приглашают).',
+                  ],
+                  imagePath: 'assets/fourth_ step.png',
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
