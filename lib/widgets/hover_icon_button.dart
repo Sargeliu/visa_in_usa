@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:visa_in_usa/constants/app_colors.dart';
 
 class HoverIconButton extends StatefulWidget {
   final String assetPath;
@@ -28,11 +27,13 @@ class _HoverIconButtonState extends State<HoverIconButton> {
     return MouseRegion(
       onEnter: (_) => _onHover(true),
       onExit: (_) => _onHover(false),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
           // Открывает URL в браузере или соответствующем приложении
           // launchUrl(Uri.parse(widget.url)); // Пример использования url_launcher пакета
         },
+        splashColor: widget.hoverColor.withOpacity(0.3), // Эффект волны при нажатии
+        hoverColor: Colors.transparent, // Отключаем цвет при наведении (необязательно)
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           transform: Matrix4.identity()..scale(_isHovered ? 1.2 : 1.0),

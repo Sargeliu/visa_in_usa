@@ -4,22 +4,22 @@ import 'package:visa_in_usa/constants/app_colors.dart';
 
 class HoverTextButton extends StatefulWidget {
   final String text;
-  final IconData? icon; // Изменено на опциональный тип
+  final IconData? icon;
   final Color primaryColor; // Добавляем параметр для основного цвета
   final Color hoverColor;   // Добавляем параметр для цвета при наведении
 
   const HoverTextButton({
     required this.text,
-    this.icon, // Теперь этот параметр может быть null
+    required this.icon,
     required this.primaryColor, // Обязательный параметр
     required this.hoverColor,   // Обязательный параметр
   });
 
   @override
-  HoverTextButtonState createState() => HoverTextButtonState();
+  _HoverTextButtonState createState() => _HoverTextButtonState();
 }
 
-class HoverTextButtonState extends State<HoverTextButton> {
+class _HoverTextButtonState extends State<HoverTextButton> {
   bool _isHovered = false;
 
   @override
@@ -27,25 +27,33 @@ class HoverTextButtonState extends State<HoverTextButton> {
     return MouseRegion(
       onEnter: (_) => _onHover(true),
       onExit: (_) => _onHover(false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        transform: Matrix4.identity()..scale(_isHovered ? 1.1 : 1.0),
-        child: Row(
-          children: [
-            if(widget.icon != null) // Проверка на null
-            Icon(
-              widget.icon,
-              color: _isHovered ? widget.hoverColor : widget.primaryColor,
-            ),
-            if (widget.icon != null) const SizedBox(width: 10), // Отступ только если есть иконка
-            Text(
-              widget.text,
-              style: GoogleFonts.montserrat(
+      child: InkWell(
+        onTap: () {
+          // Открывает URL в браузере или соответствующем приложении
+          // launchUrl(Uri.parse(widget.url)); // Пример использования url_launcher пакета
+        },
+        splashColor: widget.hoverColor.withOpacity(0.3), // Эффект волны при нажатии
+        hoverColor: Colors.transparent, // Отключаем цвет при наведении (необязательно)
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          transform: Matrix4.identity()..scale(_isHovered ? 1.1 : 1.0),
+          child: Row(
+            children: [
+              if (widget.icon != null)
+              Icon(
+                widget.icon,
                 color: _isHovered ? widget.hoverColor : widget.primaryColor,
-                fontSize: 16,
               ),
-            ),
-          ],
+              if (widget.icon != null) const SizedBox(width: 10),
+              Text(
+                widget.text,
+                style: GoogleFonts.montserrat(
+                  color: _isHovered ? widget.hoverColor : widget.primaryColor,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
