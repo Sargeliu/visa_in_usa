@@ -49,14 +49,14 @@ class DesktopFooter extends StatelessWidget {
           const HoverTextButton(
             text: "info@visausa.com",
             icon: Icons.email,
-            primaryColor: Colors.white,    // Основной цвет - белый
-            hoverColor: primarySecondColor, // Цвет при наведении
+            primaryTextColor: Colors.white,
+            fontSize: 20,
           ),
           const HoverTextButton(
             text: "+7 912 791 85 52",
             icon: Icons.phone,
-            primaryColor: Colors.white,    // Основной цвет - белый
-            hoverColor: primarySecondColor, // Цвет при наведении
+            primaryTextColor: Colors.white,
+            fontSize: 20,
           ),
           _buildSocialMediaIcons(),
         ],
@@ -64,14 +64,6 @@ class DesktopFooter extends StatelessWidget {
     );
   }
 
-  /*Widget _buildHoverFooterItem(String text, IconData icon) {
-    return HoverTextButton(
-      text: text,
-      icon: icon,
-      primaryColor: null,
-      hoverColor: null,
-    );
-  }*/
 
   Widget _buildSocialMediaIcons() {
     return const Row(

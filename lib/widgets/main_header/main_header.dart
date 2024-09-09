@@ -12,8 +12,12 @@ class MainHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final displayLarge = Theme.of(context).textTheme.displayLarge; // Получаем стиль displayLarge из темы
-    final displaySmall = Theme.of(context).textTheme.displaySmall; // Получаем стиль displayLarge из темы
+    final displayLarge = Theme.of(context)
+        .textTheme
+        .displayLarge; // Получаем стиль displayLarge из темы
+    final displaySmall = Theme.of(context)
+        .textTheme
+        .displaySmall; // Получаем стиль displayLarge из темы
 
     return CenteredView(
       child: Stack(
@@ -22,7 +26,8 @@ class MainHeader extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/desktop_main.png'), // Путь к вашей картинке
+                image: AssetImage('assets/desktop_main.png'),
+                // Путь к вашей картинке
                 fit: BoxFit.cover,
               ),
             ),
@@ -35,22 +40,22 @@ class MainHeader extends StatelessWidget {
             children: [
               // Первая строка: Почта, телефон, соцсети
               const Padding(
-                padding: EdgeInsets.only(left: 120, top: 40, right: 120,
-                    bottom: 30),
+                padding:
+                    EdgeInsets.only(left: 120, top: 40, right: 120, bottom: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     HoverTextButton(
                       text: "info@visausa.com",
                       icon: Icons.email,
-                      primaryColor: Colors.black,    // Основной цвет - белый
-                      hoverColor: primarySecondColor, // Цвет при наведении
+                      primaryIconColor: primarySecondColor,
+                      fontSize: 20,
                     ),
                     HoverTextButton(
                       text: "+7 912 791 85 52",
                       icon: Icons.phone,
-                      primaryColor: Colors.black,    // Основной цвет - белый
-                      hoverColor: primarySecondColor, // Цвет при наведении
+                      primaryIconColor: primarySecondColor,
+                      fontSize: 20,
                     ),
                     // _buildHoverFooterItem("info@visausa.com", Icons.email),
                     // _buildHoverFooterItem("+1 (234) 567-890", Icons.phone),
@@ -59,19 +64,19 @@ class MainHeader extends StatelessWidget {
                         HoverIconButton(
                           assetPath: 'assets/telegram.svg',
                           url: 'https://t.me/username',
-                          primaryColor:  Colors.black,     // Основной цвет - белый
+                          primaryColor: Colors.black, // Основной цвет - белый
                           hoverColor: primarySecondColor, // Цвет при наведении
                         ),
                         HoverIconButton(
                           assetPath: 'assets/whatsapp.svg',
                           url: 'https://wa.me/username',
-                          primaryColor:  Colors.black,     // Основной цвет - белый
+                          primaryColor: Colors.black, // Основной цвет - белый
                           hoverColor: primarySecondColor, // Цвет при наведении
                         ),
                         HoverIconButton(
                           assetPath: 'assets/viber.svg',
                           url: 'viber://chat?number=%2B1234567890',
-                          primaryColor:  Colors.black,     // Основной цвет - белый
+                          primaryColor: Colors.black, // Основной цвет - белый
                           hoverColor: primarySecondColor, // Цвет при наведении
                         ),
                       ],
@@ -84,24 +89,40 @@ class MainHeader extends StatelessWidget {
               Container(
                 width: double.infinity,
                 color: primaryFirstColor,
-                padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 115),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 23, horizontal: 115),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const HoverTextButton(text: 'СПИСОК ДОКУМЕНТОВ', icon: null,
-                        primaryColor: Colors.white, hoverColor: primarySecondColor),
+                    const HoverTextButton(
+                      text: 'СПИСОК ДОКУМЕНТОВ',
+                      icon: null,
+                      primaryTextColor: Colors.white,
+                    ),
                     _buildVerticalDivider(),
-                    const HoverTextButton(text: 'СТОИМОСТЬ', icon: null,
-                        primaryColor: Colors.white, hoverColor: primarySecondColor),
+                    const HoverTextButton(
+                      text: 'СТОИМОСТЬ',
+                      icon: null,
+                      primaryTextColor: Colors.white,
+                    ),
                     _buildVerticalDivider(),
-                    const HoverTextButton(text: 'ОТЗЫВЫ', icon: null,
-                        primaryColor: Colors.white, hoverColor: primarySecondColor),
+                    const HoverTextButton(
+                      text: 'ОТЗЫВЫ',
+                      icon: null,
+                      primaryTextColor: Colors.white,
+                    ),
                     _buildVerticalDivider(),
-                    const HoverTextButton(text: 'СПИСОК СТРАН', icon: null,
-                        primaryColor: Colors.white, hoverColor: primarySecondColor),
+                    const HoverTextButton(
+                      text: 'СПИСОК СТРАН',
+                      icon: null,
+                      primaryTextColor: Colors.white,
+                    ),
                     _buildVerticalDivider(),
-                    const HoverTextButton(text: 'КОНТАКТЫ', icon: null,
-                        primaryColor: Colors.white, hoverColor: primarySecondColor),
+                    const HoverTextButton(
+                      text: 'КОНТАКТЫ',
+                      icon: null,
+                      primaryTextColor: Colors.white,
+                    ),
                   ],
                 ),
               ),
@@ -111,15 +132,11 @@ class MainHeader extends StatelessWidget {
               Text.rich(
                 TextSpan(
                   text: 'ВИЗА ',
-                  style: displayLarge?.copyWith(
-                    color: Colors.black
-                  ),
+                  style: displayLarge?.copyWith(color: Colors.black),
                   children: [
                     TextSpan(
                       text: 'В США',
-                      style: displayLarge?.copyWith(
-                        color: primarySecondColor
-                      ),
+                      style: displayLarge?.copyWith(color: primarySecondColor),
                     ),
                   ],
                 ),
@@ -129,9 +146,7 @@ class MainHeader extends StatelessWidget {
               // Четвертая строка: Типы виз
               Text(
                 'ТИПЫ ВИЗ:',
-                style: displaySmall?.copyWith(
-                  color: Colors.black
-                ),
+                style: displaySmall?.copyWith(color: Colors.black),
               ),
               const SizedBox(height: 40),
 
@@ -221,7 +236,6 @@ class MainHeader extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildPrimaryButton(String text) {
     return ElevatedButton(

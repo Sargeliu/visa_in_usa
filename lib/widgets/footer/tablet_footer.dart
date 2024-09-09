@@ -52,15 +52,13 @@ class TabletFooter extends StatelessWidget {
               HoverTextButton(
                 text: "info@visausa.com",
                 icon: Icons.email,
-                primaryColor: Colors.white,    // Основной цвет - белый
-                hoverColor: primarySecondColor, // Цвет при наведении
+                primaryTextColor: Colors.white,
               ),
               SizedBox(width: 30,),
               HoverTextButton(
                 text: "+7 912 791 85 52",
                 icon: Icons.phone,
-                primaryColor: Colors.white,    // Основной цвет - белый
-                hoverColor: primarySecondColor, // Цвет при наведении
+                primaryTextColor: Colors.white,
               ),
             ],
           ),
